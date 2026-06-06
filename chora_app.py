@@ -1,5 +1,5 @@
 import streamlit as st
-import anthropic
+import google.generativeai as genai
 
 # ── page config 
 st.set_page_config(
@@ -9,16 +9,16 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Claude client ─────────────────────────────────────────────────────────────
-def get_client():
+# ──google generative ai client ─────────────────────────────────────────────────────────────
+def ask_chora():
     try:
-        return anthropic.Anthropic(api_key=st.secrets["ANTHROPIC_API_KEY"])
+        return genai.GenerativeModel("gemini-pro")
     except Exception:
-        st.error("Add your ANTHROPIC_API_KEY to .streamlit/secrets.toml")
+        st.error("Add your GOOGLE_API_KEY to .streamlit/secrets.toml")
         st.stop()
 
 def ask_chora(prompt: str, system: str = "") -> str:
-    client = get_client()
+    client = ask_chora()
     sys = system or (
         "You are CHORA (ጮራ), an Ethiopian wellness companion. "
         "Give warm, culturally rooted wellness guidance grounded in Ethiopian food, "
@@ -26,13 +26,13 @@ def ask_chora(prompt: str, system: str = "") -> str:
         "and never diagnose — only raise awareness. Reference local Ethiopian foods "
         "like injera, teff, misir, gomen, ayib when relevant. Respond in 3-5 sentences."
     )
-    msg = get_client().messages.create(
-        model="claude-opus-4-5",
+    msg = ask_chora().generate_content(
+        model="gemini-pro",
         max_tokens=600,
         system=sys,
         messages=[{"role": "user", "content": prompt}],
     )
-    return msg.content[0].text
+    return msg.choices[0].message
 
 # ── CSS ───────────────────────────────────────────────────────────────────────
 st.markdown("""
