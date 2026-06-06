@@ -1,6 +1,6 @@
 #  CHORA
 
-CHORA is an Ethiopian-centered wellness and body awareness application that helps users understand what their body is trying to communicate through simple physical, emotional, and mental signals.
+CHORA is an Ethiopian AI-powered wellness and body awareness platform that makes health education interactive and culturally relevant. Members are provided with personalized wellness journeys based on their age, lifestyle and health conditions. The platform has an interactive anatomy character, Ethiopian nutrition intelligence, disease simulation through food interaction, mental-health family communication tools, and accessibility concepts for rural communities. CHOKE draws on modern health science, as well as Ethiopian cultural wisdom, to help people better understand, care for and connect with their bodies.
 
 It is designed for children, teenagers, adults, and elderly users with different experiences tailored to each group.
 
